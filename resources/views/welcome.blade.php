@@ -1,10 +1,9 @@
-@extends('layouts/app')
+@extends('layouts.app')
+
+@section('title', 'Sweet Castle')
 
 @section('content')
 
-<div>
-    <h2>Welcome to the fairytale kingdom</h2>
-    <h1>Sweet Castle</h1>
-</div>
+    @include('partials.header')
 
 @endsection
