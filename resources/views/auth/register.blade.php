@@ -13,19 +13,19 @@
                 <input name="name" type="text" class="w-full h-12 border border-gray-800 rounded px-3" placeholder="Name" />
 
                 @error('name')
-                    <p class="text-red-500">{{ $message }}</p>
+                    @include('partials.error', ['message' => $message])
                 @enderror
 
                 <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3" placeholder="Email" />
 
                 @error('email')
-                    <p class="text-red-500">{{ $message }}</p>
+                    @include('partials.error', ['message' => $message])
                 @enderror
 
                 <input name="password" type="password" class="w-full h-12 border border-gray-800 rounded px-3" placeholder="Password" />
 
                 @error('password')
-                    <p class="text-red-500">{{ $message }}</p>
+                    @include('partials.error', ['message' => $message])
                 @enderror
 
                 <input name="password_confirmation"  type="password" class="w-full h-12 border border-gray-800 rounded px-3"  placeholder="Confirm password" />

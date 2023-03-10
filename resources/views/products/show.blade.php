@@ -30,7 +30,7 @@
                     <textarea name="text" class="w-full shadow-inner p-4 border-0 mb-4 rounded-lg focus:shadow-outline text-2xl @error('text') border-red-500 @enderror" placeholder="Your feedback..." spellcheck="false"></textarea>
 
                     @error('text')
-                    <p class="text-red-500">{{ $message }}</p>
+                        @include('partials.error', ['message' => $message])
                     @enderror
 
                     <button type="submit" class="font-bold py-2 px-4 w-full bg-purple-400 text-lg text-white shadow-md rounded-lg ">Send</button>
