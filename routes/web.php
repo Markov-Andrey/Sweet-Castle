@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,14 +18,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('home');
+/**
+ * No middleware
+ */
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
-Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
-Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
-Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
-Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
+Route::get('/contacts', [ContactController::class, 'showContactForm'])->name('contacts');
+Route::post('/contact_form_process', [ContactController::class, 'contactForm'])->name('contact_form_process');
 
-Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'register'])->name('register_process');
+/**
+ * User authorised
+ */
+Route::middleware("auth")->group(function (){
+    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+    Route::post('/products/comment/{id}', [ProductController::class, 'comment'])->name('comment');
+});
+
+/**
+ * Guest
+ */
+Route::middleware("guest")->group(function (){
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login_process', [AuthController::class, 'login'])->name('login_process');
+
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register_process', [AuthController::class, 'register'])->name('register_process');
+});

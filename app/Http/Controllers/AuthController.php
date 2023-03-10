@@ -28,7 +28,7 @@ class AuthController extends Controller
             return redirect(route("home"));
         }
 
-        return redirect(route("login"))->withErrors((["email" => "User not found or data entered incorrectly"]));
+        return redirect(route("login"))->withErrors((["email" => trans('auth.email')]));
     }
 
     public function logout()

@@ -21,10 +21,10 @@ class Product extends Model
 
     /**
      * Get comments sorted by date
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
     {
-        $this->hasMany(Comment::class)->orderBy("created_at");
+        return $this->hasMany(Comment::class)->orderBy("created_at");
     }
 }
