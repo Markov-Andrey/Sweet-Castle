@@ -23,11 +23,11 @@
                 @enderror
 
                 <div>
-                    <a href="#" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Forgot your password?</a>
+                    <a href="{{ route("forgot") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Forgot your password?</a>
                 </div>
 
                 <div>
-                    <a href="{{ route('register') }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Sign up</a>
+                    <a href="{{ route("register") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Sign up</a>
                 </div>
 
                 <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Log in</button>

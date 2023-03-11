@@ -26,10 +26,10 @@ class ContactForm extends Mailable
     /**
      * Build the message.
      *
-     * @return $this
+     * @return ContactForm
      */
     public function build(): ContactForm
     {
-        return $this->view('emails.contact_form_process')->with($this->formData);
+        return $this->view('emails.contact_form_email')->with($this->formData);
     }
 }

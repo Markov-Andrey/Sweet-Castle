@@ -42,9 +42,15 @@ Route::middleware("auth")->group(function (){
  * Guest
  */
 Route::middleware("guest")->group(function (){
+    //login
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login_process', [AuthController::class, 'login'])->name('login_process');
 
+    //register
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register_process', [AuthController::class, 'register'])->name('register_process');
+
+    //password forgot
+    Route::get('/forgot', [AuthController::class, 'showForgotForm'])->name('forgot');
+    Route::post('/forgot_process', [AuthController::class, 'forgot'])->name('forgot_process');
 });
