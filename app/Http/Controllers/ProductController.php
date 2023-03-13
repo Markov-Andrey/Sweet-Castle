@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentFormRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 /**
  * Class ProductController
@@ -27,6 +26,7 @@ class ProductController extends Controller
     /**
      * Show product card
      * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {

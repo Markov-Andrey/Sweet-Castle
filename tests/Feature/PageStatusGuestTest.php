@@ -5,47 +5,51 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class GetPageStatusTest extends TestCase
+class PageStatusGuestTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * The main method for checking get status
      *
      * @param string $uri
+     * @param $status
      */
-    private function getPageStatusCase(string $uri)
+
+    private function getPageStatusCase(string $uri, $status)
     {
         $response = $this->get('/'.$uri);
 
-        $response->assertStatus(200);
+        $response->assertStatus($status);
     }
 
     public function testHomePageStatus()
     {
-        $this->getPageStatusCase('');
+        $this->getPageStatusCase('',200);
     }
 
     public function testProductsPageStatus()
     {
-        $this->getPageStatusCase('products');
+        $this->getPageStatusCase('products',200);
     }
 
     public function testContactsPageStatus()
     {
-        $this->getPageStatusCase('contacts');
+        $this->getPageStatusCase('contacts',200);
     }
 
     public function testLoginPageStatus()
     {
-        $this->getPageStatusCase('login');
+        $this->getPageStatusCase('login',200);
     }
 
     public function testRegisterPageStatus()
     {
-        $this->getPageStatusCase('register');
+        $this->getPageStatusCase('register',200);
     }
 
     public function testForgotPageStatus()
     {
-        $this->getPageStatusCase('forgot');
+        $this->getPageStatusCase('forgot',200);
     }
 }

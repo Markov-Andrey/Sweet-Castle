@@ -36,6 +36,12 @@
                                     @include('partials.error')
                                 @enderror
 
+                                <input name="price" type="number" step="0.01" class="w-full h-12 border border-gray-800 rounded px-3 @error('price') border-red-500 @enderror" placeholder="Price" value="{{ isset($product) ? $product->price : '' }}" />
+
+                                @error('price')
+                                    @include('partials.error')
+                                @enderror
+
                                 @if(isset($product))
                                     <div>
                                         <img width="400" src="/storage/products/{{ $product->thumbnail }}">

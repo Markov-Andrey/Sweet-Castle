@@ -17,6 +17,7 @@ class Product extends Model
         "title",
         "description",
         "thumbnail",
+        "price",
     ];
 
     /**

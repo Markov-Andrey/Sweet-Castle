@@ -18,6 +18,7 @@
                     <p class="sm:text-sm text-xs text-gray-700 px-2 mr-1 my-3">
                         {{ $product->description }}
                     </p>
+                    <h1 class="font-bold text-2x1 text-blue-900"> {{ $product->price }} </h1>
                 </div>
             </div>
         </div>

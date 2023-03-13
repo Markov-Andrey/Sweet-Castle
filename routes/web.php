@@ -6,6 +6,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,8 @@ Route::post('/contact_form_process', [ContactController::class, 'contactForm'])-
  * User authorised
  */
 Route::middleware("auth")->group(function (){
-    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/cart', [CartController::class, 'showCartForm'])->name('cart');
 
     Route::post('/products/comment/{id}', [ProductController::class, 'comment'])->name('comment');
 });
