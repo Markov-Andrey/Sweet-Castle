@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
+    'myAddress' => env('MAIL_FROM_ADDRESS'),
 
     /*
     |--------------------------------------------------------------------------

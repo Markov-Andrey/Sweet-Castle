@@ -7,6 +7,10 @@ use App\Http\Requests\Admin\ProductFormRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+/**
+ * Class ProductController
+ * @package App\Http\Controllers\Admin
+ */
 class ProductController extends Controller
 {
     private $product;

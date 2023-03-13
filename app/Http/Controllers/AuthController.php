@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Jobs\ForgotUserEmailJob;
+use App\Actions\ForgotPasswordAction;
+use App\Actions\RegisterUserAction;
+use App\Http\Requests\Auth\AuthForgotRequest;
+use App\Http\Requests\Auth\AuthLoginRequest;
+use App\Http\Requests\Auth\AuthRegisterRequest;
 
+/**
+ * Class AuthController
+ * @package App\Http\Controllers
+ */
 class AuthController extends Controller
 {
     public function showLoginForm()
@@ -18,12 +24,14 @@ class AuthController extends Controller
         return view("auth.register");
     }
 
-    public function login(Request $request)
+    public function showForgotForm()
     {
-        $data = $request->validate([
-            "email" => ["required", "email", "string"],
-            "password" => ["required"],
-        ]);
+        return view("auth.forgot");
+    }
+
+    public function login(AuthLoginRequest $request)
+    {
+        $data = $request->validated();
 
         if(auth("web")->attempt($data)){
             return redirect(route("home"));
@@ -39,19 +47,11 @@ class AuthController extends Controller
         return redirect(route("home"));
     }
 
-    public function register(Request $request)
+    public function register(AuthRegisterRequest $request, RegisterUserAction $registerUserAction)
     {
-        $data = $request->validate([
-            "name" => ["required", "string"],
-            "email" => ["required", "email", "unique:users,email"],
-            "password" => ["required", "confirmed"],
-        ]);
+        $data = $request->validated();
 
-        $user = User::create([
-            "name" => $data["name"],
-            "email" => $data["email"],
-            "password" => bcrypt($data["password"]),
-        ]);
+        $user = $registerUserAction($data);
 
         if($user){
             auth("web")->login($user);
@@ -60,25 +60,11 @@ class AuthController extends Controller
         return redirect(route("home"));
     }
 
-    public function showForgotForm()
+    public function forgot(AuthForgotRequest $request, ForgotPasswordAction $forgotPasswordAction)
     {
-        return view("auth.forgot");
-    }
+        $data = $request->validated();
 
-    public function forgot(Request $request)
-    {
-        $data = $request->validate([
-            "email" => ["required", "email", "string", "exists:users"],
-        ]);
-
-        $user = User::where([
-            "email" => $data["email"]])->first();
-
-        $password = uniqid();
-        $user->password = bcrypt($password);
-        $user->save();
-
-        ForgotUserEmailJob::dispatch($user, $password);
+        $forgotPasswordAction($data);
 
         return redirect(route("home"));
     }

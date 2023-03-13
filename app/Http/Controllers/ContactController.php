@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ContactEmailAction;
 use App\Http\Requests\ContactFormRequest;
-use App\Mail\ContactForm;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
+/**
+ * Class ContactController
+ * @package App\Http\Controllers
+ */
 class ContactController extends Controller
 {
     public function showContactForm()
@@ -14,9 +16,11 @@ class ContactController extends Controller
         return view("contact_form");
     }
 
-    public function contactForm(ContactFormRequest $request)
+    public function contactForm(ContactFormRequest $request, ContactEmailAction $contactEmailAction)
     {
-        Mail::to("AMarkov1911@yandex.by")->send(new ContactForm($request->validated()));
+        $data = $request->validated();
+
+        $contactEmailAction($data);
 
         return redirect(route("contacts"));
     }

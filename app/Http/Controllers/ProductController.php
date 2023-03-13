@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentForm;
+use App\Http\Requests\CommentFormRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
  * Class ProductController
  * @package App\Http\Controllers
  */
-
 class ProductController extends Controller
 {
     /**
@@ -40,10 +39,10 @@ class ProductController extends Controller
 
     /**
      * @param $id
-     * @param CommentForm $request
+     * @param CommentFormRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function comment($id, CommentForm $request)
+    public function comment($id, CommentFormRequest $request)
     {
         $product = Product::findOrFail($id);
 

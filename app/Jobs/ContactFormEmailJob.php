@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\ForgotPassword;
+use App\Mail\ContactForm;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -10,22 +10,22 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class ForgotUserEmailJob implements ShouldQueue
+class ContactFormEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
-    protected $password;
+    private $mail;
+    private $data;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user, $password)
+    public function __construct($mail, $data)
     {
-        $this->user = $user;
-        $this->password = $password;
+        $this->mail = $mail;
+        $this->data = $data;
     }
 
     /**
@@ -35,6 +35,6 @@ class ForgotUserEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->user)->send(new ForgotPassword($this->password));
+        Mail::to($this->mail)->send(new ContactForm($this->data));
     }
 }
