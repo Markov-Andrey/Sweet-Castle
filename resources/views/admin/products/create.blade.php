@@ -36,6 +36,12 @@
                                     @include('partials.error')
                                 @enderror
 
+                                @if(isset($product))
+                                    <div>
+                                        <img width="400" src="/storage/products/{{ $product->thumbnail }}">
+                                    </div>
+                                @endif
+
                                 <input name="thumbnail" type="file" class="w-full h-12" placeholder="Обложка" />
 
                                 @error('thumbnail')
@@ -44,12 +50,6 @@
 
                                 <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Сохранить</button>
                             </form>
-
-                            @if(isset($product))
-                                <div>
-                                    <img src="/storage/products/{{ $product->thumbnail }}">
-                                </div>
-                            @endif
 
                         </div>
                     </div>
