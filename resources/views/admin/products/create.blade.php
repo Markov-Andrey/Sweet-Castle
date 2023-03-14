@@ -13,10 +13,6 @@
                         <h3 class="text-gray-700 text-3xl font-medium">{{ isset($product) ? 'Update product '.$product->title : 'Add product' }}</h3>
 
                         <div class="mt-8">
-
-                        </div>
-
-                        <div class="mt-8">
                             <form enctype="multipart/form-data" class="space-y-5 mt-5" method="POST" action="{{ isset($product) ? route("admin.products.update", $product->id) : route("admin.products.store") }}">
                                 @csrf
 

@@ -5,4 +5,9 @@
 
 Final project at My IT School.
 
+## Installation
+
+- php artisan queue:work
+- php artisan migrate --seed
+
 ## Main features

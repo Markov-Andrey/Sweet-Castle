@@ -24,6 +24,7 @@
                     </div>
 
                     <nav class="mt-10">
+
                         <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="{{ route("admin.products.index") }}">
                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -32,9 +33,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                             </svg>
-
                             <span class="mx-3">Products</span>
                         </a>
+
                         <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="{{ route("admin.users.index") }}">
                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -43,44 +44,24 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M12,12a6,6,0,1,1,6-6A6.006,6.006,0,0,1,12,12Zm0-9a3,3,0,1,0,3,3A3,3,0,0,0,12,3Z"></path>
                             </svg>
-
                             <span class="mx-3">Users</span>
                         </a>
+
+                        <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="{{ route("admin.comments.index") }}">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M23.954,5.542,15.536,13.96a5.007,5.007,0,0,1-7.072,0L.046,5.542C.032,5.7,0,5.843,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6C24,5.843,23.968,5.7,23.954,5.542Z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M14.122,12.546l9.134-9.135A4.986,4.986,0,0,0,19,1H5A4.986,4.986,0,0,0,.744,3.411l9.134,9.135A3.007,3.007,0,0,0,14.122,12.546Z"></path>
+                            </svg>
+                            <span class="mx-3">Comments</span>
+                        </a>
+
                     </nav>
                 </div>
 
                 <div class="flex-1 flex flex-col overflow-hidden">
-                    <header class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
-                        <div class="flex items-center">
-                            <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
-                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                          stroke-linejoin="round"></path>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="flex items-center">
-                            <div x-data="{ dropdownOpen: false }" class="relative">
-                                <button @click="dropdownOpen = ! dropdownOpen"
-                                        class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
-                                    <img class="h-full w-full object-cover"
-                                         src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80"
-                                         alt="Your avatar">
-                                </button>
-
-                                <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
-                                     style="display: none;"></div>
-
-                                <div x-show="dropdownOpen"
-                                     class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
-                                     style="display: none;">
-                                    <a href="{{ route("admin.logout") }}"
-                                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Выйти</a>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
                     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                         @yield('content')
                     </main>

@@ -1,10 +1,11 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin')
+@section('title', 'Admin - Users')
 
 @section('content')
 
     <div class="container mx-auto px-6 py-8">
+
         <h3 class="text-gray-700 text-3xl font-medium">Users</h3>
 
         <div class="flex flex-col mt-8">

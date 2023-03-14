@@ -37,4 +37,9 @@ class PageStatusAdminTest extends TestCase
     {
         $this->getPageStatusCase('admin/users',200);
     }
+
+    public function testCommentsPageStatus()
+    {
+        $this->getPageStatusCase('admin/comments',200);
+    }
 }
