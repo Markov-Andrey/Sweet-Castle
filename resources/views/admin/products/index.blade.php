@@ -19,6 +19,8 @@
                         <thead>
                         <tr>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Icon</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Name</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Price</th>
@@ -31,7 +33,7 @@
 
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <img class="rounded-full border border-gray-100 shadow-sm" width="75" src="/storage/products/{{ $product->thumbnail }}">
+                                    <img class="rounded-full border border-gray-100 shadow-sm" width="75" src="/storage/products/{{ $product->thumbnail }}" alt="ico">
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     <div class="text-sm leading-5 text-gray-900">{{ $product->title }}</div>
