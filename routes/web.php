@@ -35,7 +35,6 @@ Route::post('/contact_form_process', [ContactController::class, 'contactForm'])-
  */
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/cart', [CartController::class, 'showCartForm'])->name('cart');
 
     Route::post('/products/comment/{id}', [ProductController::class, 'comment'])->name('comment');
 });

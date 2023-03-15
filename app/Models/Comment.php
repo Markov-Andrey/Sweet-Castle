@@ -4,29 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-      "text",
-      "user_id",
-      "product_id",
+        "user_id",
+        "text",
     ];
 
     /**
-     * Relationship with parent product
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return MorphTo
      */
-    public function product()
+    public function commentable()
     {
-        return $this->belongsTo(Product::class);
+        return $this->morphTo();
     }
 
     /**
      * Relationship with parent user
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user()
     {
