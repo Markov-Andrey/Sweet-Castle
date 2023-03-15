@@ -9,11 +9,13 @@
         <title>@yield('title')</title>
 
         <link href="{{ asset('css/sweet-castle.css') }}" rel="stylesheet">
+        @livewireStyles
 
     </head>
     <body>
         @yield('content')
 
         <script src="/js/app.js"></script>
+        @livewireScripts
     </body>
 </html>
