@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    //Trait - Commentable
     use Commentable;
 
     /**

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class CommentsController extends Controller
 {
@@ -16,7 +15,9 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comment::with('product', 'user')->orderBy("created_at", "DESC")->paginate(10);
+        $comments = Comment::with('product', 'user')
+            ->orderBy("created_at", "DESC")
+            ->paginate(10);
 
         return view('admin.comments.index', [
             "comments" => $comments,
