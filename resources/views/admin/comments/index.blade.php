@@ -29,28 +29,32 @@
 
                         <tbody class="bg-white">
                         @foreach($comments as $comment)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $comment->user->name }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $comment->product->title }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $comment->text }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $comment->created_at }}</div>
-                                </td>
+                            @foreach($products as $product)
+                                @if($comment->commentable_id == $product->id)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-900">{{ $comment->user->name }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <div class="text-sm leading-5 text-gray-900">{{ $product->title }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-900">{{ $comment->text }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-900">{{ $comment->created_at }}</div>
+                                    </td>
 
-                                <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                    <form action="{{ route("admin.comments.destroy", $comment->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                                        <form action="{{ route("admin.comments.destroy", $comment->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endforeach
                         @endforeach
                         </tbody>
                     </table>
