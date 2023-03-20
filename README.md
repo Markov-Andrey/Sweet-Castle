@@ -19,6 +19,7 @@ Config Open Server:
 Deployment:
 - composer install
 - npm run dev
+- php artisan storage:link
 - php artisan migrate --seed
 - php artisan queue:work
 
