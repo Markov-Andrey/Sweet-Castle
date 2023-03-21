@@ -59,5 +59,6 @@ Deployment:
 - Traits were used to render identical pieces of code
 - Livewire:
 - Comments are updated (polymorphic model in case of scaling)
-- CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page.
+- CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page. Delete method also cleans up the image
+
 

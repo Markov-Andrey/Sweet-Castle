@@ -3,7 +3,7 @@
         <h3 class="text-gray-700 text-3xl font-medium">Products</h3>
 
         <div class="mt-8">
-            <a wire:click="add" class="text-indigo-600 hover:text-indigo-900">Add product</a>
+            <a wire:click="add" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Add product</a>
         </div>
 
         <div wire:target="store" wire:loading.class="opacity-50" class="flex flex-col mt-8">
@@ -38,8 +38,8 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                    <a wire:click="update({{ $item }})" class="text-indigo-600 hover:text-indigo-900">Update</a>
-                                    <a @click="$wire.delete({{ $item }})" class="text-red-600 hover:text-red-900">Delete</a>
+                                    <a wire:click="update({{ $item }})" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Update</a>
+                                    <a @click="$wire.delete({{ $item }})" class="text-red-600 hover:text-red-900 cursor-pointer">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -63,8 +63,8 @@
                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <div class="sm:flex sm:items-start">
                                 <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 1.5v-1.5m12 9.75l-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0L3 16.5m15-3.38a48.474 48.474 0 00-6-.37c-2.032 0-4.034.125-6 .37m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.17c0 .62-.504 1.124-1.125 1.124H4.125A1.125 1.125 0 013 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 016 13.12M12.265 3.11a.375.375 0 11-.53 0L12 2.845l.265.265zm-3 0a.375.375 0 11-.53 0L9 2.845l.265.265zm6 0a.375.375 0 11-.53 0L15 2.845l.265.265z"></path>
                                     </svg>
                                 </div>
                                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">

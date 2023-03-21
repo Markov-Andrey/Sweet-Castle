@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentFormRequest;
 use App\Models\Product;
 
 /**
@@ -35,19 +34,5 @@ class ProductController extends Controller
         return view('products.show', [
             "product" => $product,
         ]);
-    }
-
-    /**
-     * @param $id
-     * @param CommentFormRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function comment($id, CommentFormRequest $request)
-    {
-        $product = Product::findOrFail($id);
-
-        $product->comments()->create($request->validated());
-
-        return redirect(route("products.show", $id));
     }
 }

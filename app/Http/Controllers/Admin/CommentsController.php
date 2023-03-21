@@ -16,7 +16,12 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        //Get the id and name of a product that has at least 1 link to a model
+        $products = Product::whereHas('comments', function($query) {
+            $query->where('commentable_type', Product::class);
+        })->get(['title', 'id']);
+
+        //Get comments and users
         $comments = Comment::with('user')
             ->orderBy("created_at", "DESC")
             ->paginate(10);
