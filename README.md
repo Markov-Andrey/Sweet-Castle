@@ -58,7 +58,7 @@ Deployment:
   - Sending mail is replicated through setting pending tasks so as not to load the server (queue: work or supervisor for Linux)
 - Traits were used to render identical pieces of code
 - Livewire:
-- Comments are updated (polymorphic model in case of scaling)
-- CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page. Delete method also cleans up the image
-
+  - Comments are updated (polymorphic model in case of scaling)
+  - CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page. Delete method also cleans up the image
+  - Implemented adding products to the cart through the database
 
