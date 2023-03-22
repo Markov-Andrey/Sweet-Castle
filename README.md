@@ -59,30 +59,19 @@ Deployment:
 
 
 # Stack (why selected?)
-
-##Backend:
-
-###Core
+## Backend
+### Core
 - **PHP** - main engine
-
-###Framework
-
+### Framework
 - **Laravel** - friendly framework based on MVC model, automation of routine tasks, built-in test suite)
 - **Livewire** - creating dynamic interfaces, automating work with ajax
-
-###Template engine
-
+### Template engine
 - **Blade** - simplification of work with HTML layout, used out of the box in Laravel
-
-##Frontend:
-
-###Styles
-
+## Frontend
+### Styles
 - **Bootstrap** - did not live up to expectations, it is required to be eradicated from the project
 - **Tailwind CSS** - flexible framework for working with CSS styles inside HTML layout, the peculiarity of its work is to clean the output CSS-file from unused classes
-
-###JavaScript
-
+### JavaScript
 - **Alpine JS** - working with js inside html-file (it is recommended to use tailwind developers)
 - **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS (it is recommended to use tailwind developers)
     
