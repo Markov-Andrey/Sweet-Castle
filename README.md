@@ -26,7 +26,11 @@ Deployment:
 # Main features
 - Displaying products
 - Comments
-- Admin Panel
+- Admin Panel:
+  - products
+  - users
+  - comments
+  - orders
 - CRUD
 - Login form
 - Registration form
@@ -34,31 +38,58 @@ Deployment:
 - Forgotten password form
 
 
-## Stack
-- Core:
-  - PHP
-- Framework:
-  - Laravel
-  - Livewire
-- Template engine:
-  - Blade
-- Styles:
-  - Bootstrap
-  - Tailwind CSS
+# Map of site
 
-## Backend features
-- Factories and seeds are used to fill the base
-- Using unit tests to check if page status works, tests use the test base
-- Slim controllers:
-  - Validation moved to Requests classes
-  - For simple business logic, there is a php artisan make:action console command that creates an action class template with the magic method __invoke method (object as a function)
-- Mail:
-  - Sending feedback to personal mail (smtp Yandex)
-  - A forgotten password is sent to the user's email
-  - Sending mail is replicated through setting pending tasks so as not to load the server (queue: work or supervisor for Linux)
-- Traits were used to render identical pieces of code
-- Livewire:
-  - Comments are updated (polymorphic model in case of scaling)
-  - CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page. Delete method also cleans up the image
-  - Implemented adding products to the cart through the database
+## Admin
+- /admin/login (point of entry)
+- /admin/products (CRUD async Livewire)
+- /admin/users (list and delete entry (sync PHP)
+- /admin/comments (list and delete entry (sync PHP)
+- /admin/orders (list async Livewire)
+
+## Guest (User)
+- **/admin/login** (point of entry)
+- **/** (main page)
+- **/login** (point of entry)
+- **/products** (list of products through pagination)
+- **/product/{id}** (detailed product card, comments (async Livewire)
+- **/forgot** (password reset form with sending an email with a new password (sync PHP, through the worker QUEUE)
+-  **/register** (new user registration form (sync PHP)
+-  **/contacts** (submitting a feedback form (sync PHP, through the worker QUEUE)
+
+
+# Stack (why selected?)
+##Backend:
+###Core
+- **PHP** - main engine
+###Framework
+- **Laravel** - friendly framework based on MVC model, automation of routine tasks, built-in test suite)
+- **Livewire** - creating dynamic interfaces, automating work with ajax
+###Template engine
+- **Blade** - simplification of work with HTML layout, used out of the box in Laravel
+##Frontend:
+###Styles
+- **Bootstrap** - did not live up to expectations, it is required to be eradicated from the project
+- **Tailwind CSS** - flexible framework for working with CSS styles inside HTML layout, the peculiarity of its work is to clean the output CSS-file from unused classes
+###JavaScript
+  - **Alpine JS** - working with js inside html-file (it is recommended to use tailwind developers)
+  - **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS (it is recommended to use tailwind developers)
+    
+
+# Backend features
+1. Factories and seeds are used to fill the base
+2. Using unit tests to check if page status works, tests use the test base
+3. Slim controllers:
+- Validation moved to Requests classes
+- For simple business logic, there is a php artisan make:action console command that creates an action class template with the magic method __invoke method (object as a function)
+4. Mail:
+- Sending feedback to personal mail (smtp Yandex)
+- A forgotten password is sent to the user's email
+- Sending mail is replicated through setting pending tasks so as not to load the server (queue: work or supervisor for Linux)
+5. Traits were used to render identical pieces of code
+6. Livewire:
+- Comments are updated (polymorphic model in case of scaling)
+- CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page. Delete method also cleans up the image
+- Implemented adding products to the cart through the database
+- Transferring data from cart to order
 
