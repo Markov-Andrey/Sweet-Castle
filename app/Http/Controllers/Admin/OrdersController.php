@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Order;
 
 /**
  * Class ProductController
  * @package App\Http\Controllers\Admin
  */
-class ProductController extends Controller
+class OrdersController extends Controller
 {
 
     /**
@@ -19,12 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::query()
-            ->orderBy("created_at", "DESC")
-            ->paginate(5);
 
-        return view('admin.products.index', [
-            "products" => $products,
-        ]);
+        return view('admin.orders.index');
     }
 }

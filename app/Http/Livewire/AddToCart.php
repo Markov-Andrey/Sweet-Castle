@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\CartItem;
-use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -39,11 +38,6 @@ class AddToCart extends Component
                 'quantity' => $quantity,
             ]);
         }
-
-        // Retrieve updated cart data for the user
-        $cart = CartItem::where('user_id', $userId)
-            ->pluck('quantity', 'product_id')
-            ->toArray();
 
         session()->flash('message', 'Product added successfully!');
     }

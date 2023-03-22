@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Livewire;
+
+use App\Models\Order;
+use Livewire\Component;
+
+class Orders extends Component
+{
+    public function render()
+    {
+        $orders = Order::query()->orderBy("created_at", "DESC")->paginate(10);
+
+        return view('livewire.orders', [
+            'orders' => $orders,
+        ]);
+    }
+}
