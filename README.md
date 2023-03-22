@@ -41,11 +41,11 @@ Deployment:
 # Map of site
 
 ## Admin
-- /admin/login (point of entry)
-- /admin/products (CRUD async Livewire)
-- /admin/users (list and delete entry (sync PHP)
-- /admin/comments (list and delete entry (sync PHP)
-- /admin/orders (list async Livewire)
+- **/admin/login** (point of entry)
+- **/admin/products** (CRUD async Livewire)
+- **/admin/users** (list and delete entry (sync PHP)
+- **/admin/comments** (list and delete entry (sync PHP)
+- **/admin/orders** (list async Livewire)
 
 ## Guest (User)
 - **/admin/login** (point of entry)
@@ -59,21 +59,32 @@ Deployment:
 
 
 # Stack (why selected?)
+
 ##Backend:
+
 ###Core
 - **PHP** - main engine
+
 ###Framework
+
 - **Laravel** - friendly framework based on MVC model, automation of routine tasks, built-in test suite)
 - **Livewire** - creating dynamic interfaces, automating work with ajax
+
 ###Template engine
+
 - **Blade** - simplification of work with HTML layout, used out of the box in Laravel
+
 ##Frontend:
+
 ###Styles
+
 - **Bootstrap** - did not live up to expectations, it is required to be eradicated from the project
 - **Tailwind CSS** - flexible framework for working with CSS styles inside HTML layout, the peculiarity of its work is to clean the output CSS-file from unused classes
+
 ###JavaScript
-  - **Alpine JS** - working with js inside html-file (it is recommended to use tailwind developers)
-  - **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS (it is recommended to use tailwind developers)
+
+- **Alpine JS** - working with js inside html-file (it is recommended to use tailwind developers)
+- **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS (it is recommended to use tailwind developers)
     
 
 # Backend features
