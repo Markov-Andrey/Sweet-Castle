@@ -74,7 +74,9 @@ Deployment:
 ### JavaScript
 - **Alpine JS** - working with js inside html-file
 - **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS
-    
+
+# Frontend features
+1. Order style changes depending on the status
 
 # Backend features
 1. Factories and seeds are used to fill the base
@@ -92,4 +94,5 @@ Deployment:
 - CRUD rewritten with Livewire and Alpine JS. Everything is updated without reloading the page. Delete method also cleans up the image
 - Implemented adding products to the cart through the database
 - Transferring data from cart to order
+- Order status change
 
