@@ -72,8 +72,8 @@ Deployment:
 - **Bootstrap** - did not live up to expectations, it is required to be eradicated from the project
 - **Tailwind CSS** - flexible framework for working with CSS styles inside HTML layout, the peculiarity of its work is to clean the output CSS-file from unused classes
 ### JavaScript
-- **Alpine JS** - working with js inside html-file (it is recommended to use tailwind developers)
-- **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS (it is recommended to use tailwind developers)
+- **Alpine JS** - working with js inside html-file
+- **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS
     
 
 # Backend features
