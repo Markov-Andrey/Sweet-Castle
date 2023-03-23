@@ -16,7 +16,7 @@
                 <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                     <div class="flex w-2/5"> <!-- product -->
                         <div class="w-20">
-                            <img class="h-24" src="/storage/products/{{ $item->product->thumbnail }}" alt="">
+                            <img class="rounded-full border border-gray-100 shadow-sm" src="/storage/products/{{ $item->product->thumbnail }}" alt="">
                         </div>
                         <div class="flex flex-col justify-between ml-4 flex-grow">
                             <span class="font-bold text-sm">{{ $item->product->title }}</span>
@@ -34,7 +34,7 @@
                         </svg>
                     </div>
                     <span class="text-center w-1/5 font-semibold text-sm">{{ $item->product->price }}</span>
-                    <span class="text-center w-1/5 font-semibold text-sm">{{ $item->quantity * $item->product->price }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm">{{ number_format($item->quantity * $item->product->price, 2) }}</span>
                 </div>
             @endforeach
 

@@ -79,6 +79,7 @@ class Cart extends Component
         foreach ($cartItems as $item){
             $total += $item->product->price * $item->quantity;
         }
+        $total = number_format($total, 2);
 
         return view('livewire.cart', [
             "cartItems" => $cartItems,

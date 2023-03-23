@@ -43,14 +43,20 @@ class Orders extends Component
             ->orderBy('orders.created_at', 'DESC')
             ->paginate(10);
 
+        //Grouping by identical orders
+        $groupOrders = $orders->groupBy('order');
+
+        //Total amount for orders
+        $totals = $groupOrders->map(function ($group) {
+            $total = 0;
+            foreach ($group as $order) {
+                $total += $order->product_price * $order->quantity;
+            }
+            return $total;
+        });
+
         //All status table
         $statuses = Status::query()->get();
-
-        //Total Sum
-        $total = null;
-        foreach ($orders as $item){
-            $total += $item->product_price * $item->quantity;
-        }
 
         //Update ticket status
         foreach($orders as $order){
@@ -59,8 +65,9 @@ class Orders extends Component
 
         return view('livewire.orders', [
             'orders' => $orders,
+            'groupOrders' => $groupOrders,
             'statuses' => $statuses,
-            'total' => $total,
+            'totals' => $totals,
         ]);
     }
 }

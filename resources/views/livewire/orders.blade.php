@@ -3,7 +3,7 @@
         <h3 class="text-gray-700 text-3xl font-medium">Orders</h3>
 
         <div id="accordion-arrow-icon" data-accordion="close">
-            @foreach($orders->groupBy('order') as $orderNum => $orderProducts)
+            @foreach($groupOrders as $orderNum => $orderProducts)
 
             <h2 id="accordion-arrow-icon-heading-{{ $loop->iteration }}">
                 <button type="button" class="flex gap-x-4 items-center justify-between w-full p-5 font-medium text-left text-gray-900 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-white dark:bg-gray-800 focus:ring-gray-200
@@ -104,7 +104,7 @@
                                 <div class="text-sm leading-5 text-gray-900">{{ $order->product_price }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">{{ $order->product_price * $order->quantity }}</div>
+                                <div class="text-sm leading-5 text-gray-900">{{ number_format($order->product_price * $order->quantity, 2) }}</div>
                             </td>
                         </tr>
                     </tbody>
@@ -133,7 +133,7 @@
                                 TOTAL:
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                {{ $total }}
+                                ${{ number_format($totals[$orderNum], 2) }}
                             </td>
                         </tr>
                     </tfoot>
