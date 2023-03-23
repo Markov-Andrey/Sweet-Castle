@@ -74,7 +74,7 @@ class Cart extends Component
     {
         $total = 0;
 
-        $cartItems = CartItem::where('user_id', '=', Auth::id())->with('product')->orderBy("created_at", "DESC")->get();
+        $cartItems = CartItem::where('user_id', Auth::id())->with('product')->orderBy("created_at", "DESC")->get();
 
         foreach ($cartItems as $item){
             $total += $item->product->price * $item->quantity;
