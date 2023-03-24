@@ -9,5 +9,9 @@
             </div>
         </div>
     @endif
-    <button wire:click="add({{ $productId }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Add to cart</button>
+    @auth("web")
+            <button wire:click="add({{ $productId }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Add to cart
+            </button>
+    @endauth
 </div>

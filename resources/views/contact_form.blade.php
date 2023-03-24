@@ -14,13 +14,13 @@
                 <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
 
                 @error('email')
-                    <p class="text-red-500">{{ $message }}</p>
+                    @include('partials.error')
                 @enderror
 
                 <input  name="text" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('text') border-red-500 @enderror" placeholder="Message" />
 
                 @error('text')
-                <p class="text-red-500">{{ $message }}</p>
+                    @include('partials.error')
                 @enderror
 
                 <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Send</button>
