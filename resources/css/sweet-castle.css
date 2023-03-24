@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+.sweet-font{
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+input:focus {
+    outline: none !important;
+    border: none !important; /* replace with your desired border style */
+    border-color: transparent;
+}
