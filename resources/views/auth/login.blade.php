@@ -25,7 +25,7 @@
                                     </label>
 
                                     @error('email')
-                                    @include('partials.error', ['message' => $message])
+                                        @include('partials.error', ['message' => $message])
                                     @enderror
                                 </div>
                                 <div class="relative">
@@ -35,7 +35,7 @@
                                     </label>
 
                                     @error('password')
-                                    @include('partials.error', ['message' => $message])
+                                        @include('partials.error', ['message' => $message])
                                     @enderror
                                 </div>
                                 <div>

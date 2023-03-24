@@ -4,12 +4,12 @@
         <div class="flex flex-wrap flex-col justify-between items-center mx-auto max-w-screen-xl">
             <a href="{{ route("home") }}" class="flex items-center flex-row">
                 <img src="/ico/logo.png" class="mr-3 h-6 sm:h-10" alt="Sweet Castle Logo" />
-                <h1 class="text-7xl font-bold text-center sweet-font text-pink-500">
+                <h1 class="text-7xl font-bold text-center sweet-font text-pink-500 drop-shadow-lg">
                     <span>S</span><span class="text-pink-400">w</span><span>e</span><span class="text-pink-400">e</span><span>t</span>
                     <span>C</span><span class="text-pink-400">a</span><span>s</span><span class="text-pink-400">t</span><span>l</span><span class="text-pink-400">e</span>
                 </h1>
             </a>
-            <h2 class="text-3xl text-center sweet-font text-rose-500">Welcome to the fairytale kingdom!</h2>
+            <h2 class="text-3xl text-center sweet-font text-rose-500 drop-shadow-md">Welcome to the fairytale kingdom!</h2>
         </div>
 
         <div class="flex flex-wrap flex-auto justify-between items-center mx-auto max-w-screen-xl">
@@ -23,6 +23,9 @@
                         guest
                     @endguest
                 </p>
+                @auth("web")
+                    @livewire('button-cart')
+                @endauth
             </div>
             <div class="flex items-center lg:order-2">
 

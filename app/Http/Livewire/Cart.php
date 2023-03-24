@@ -18,6 +18,7 @@ class Cart extends Component
         $item = CartItem::find($id);
         $item->quantity += 1;
         $item->save();
+        $this->emit('productAdd');
     }
 
     /**
@@ -36,6 +37,7 @@ class Cart extends Component
         }
 
         $item->save();
+        $this->emit('productAdd');
     }
 
     /**
@@ -44,6 +46,7 @@ class Cart extends Component
     public function delete($id)
     {
         CartItem::destroy($id);
+        $this->emit('productAdd');
     }
 
     /**
@@ -65,6 +68,7 @@ class Cart extends Component
             $order->save();
             $item->delete();
         }
+        $this->emit('productAdd');
     }
 
     /**

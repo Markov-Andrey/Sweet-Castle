@@ -9,6 +9,7 @@
         <title>@yield('title')</title>
 
         <link href="{{ asset('css/sweet-castle.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         @livewireStyles
 
     </head>
