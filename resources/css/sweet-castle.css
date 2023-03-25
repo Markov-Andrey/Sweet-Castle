@@ -23,4 +23,9 @@
         background-attachment: fixed;
     }
 
+    textarea {
+        resize: none;
+    }
+
+
 }

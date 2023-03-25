@@ -16,7 +16,7 @@
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                 <div class="relative">
-                                    <input autocomplete="off" id="name" name="name" type="text" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900" placeholder="Name" />
+                                    <input autocomplete="off" id="name" name="name" type="text" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 @error('name') border-red-500 @enderror" placeholder="Name" />
                                     <label for="name" class="absolute left-3 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">
                                         Name
                                     </label>
@@ -27,7 +27,7 @@
                                 @enderror
 
                                 <div class="relative">
-                                    <input autocomplete="off" id="email" name="email" type="text" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900" placeholder="Email" />
+                                    <input autocomplete="off" id="email" name="email" type="text" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 @error('email') border-red-500 @enderror" placeholder="Email" />
                                     <label for="email" class="absolute left-3 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">
                                         Email
                                     </label>
@@ -38,7 +38,7 @@
                                 @enderror
 
                                 <div class="relative">
-                                    <input autocomplete="off" id="password" name="password" type="password" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900" placeholder="Password" />
+                                    <input autocomplete="off" id="password" name="password" type="password" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 @error('password') border-red-500 @enderror" placeholder="Password" />
                                     <label for="password" class="absolute left-3 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">
                                         Password
                                     </label>

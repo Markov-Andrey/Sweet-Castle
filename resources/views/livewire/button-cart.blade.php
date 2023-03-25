@@ -23,7 +23,7 @@
                     <tr>
                         @foreach(['Photo','Name','Price','Quantity','Subtotal',] as $name)
                             @if($loop->odd)
-                                <th scope="col" class="px-6 py-3 bg-pink-50 dark:bg-gray-800">
+                                <th scope="col" class="px-6 py-3 bg-pink-50 dark:bg-gray-800 text-center">
                                     {{$name}}
                                 </th>
                             @else
@@ -36,11 +36,11 @@
                 </thead>
                 <tbody>
                     @foreach($itemsCollection as $item)
-                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <tr class="border-b border-gray-200 dark:border-gray-700 text-center">
                             <th scope="row" class="px-6 py-4 bg-pink-50">
                                 <img class="rounded-full border border-gray-100 shadow-sm w-10" src="/storage/products/{{ $item->product->thumbnail }}" alt="{{ $item->product->title }}">
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-center">
                                 {{ $item->product->title }}
                             </td>
                             <td class="px-6 py-4 bg-pink-50">
@@ -54,7 +54,7 @@
                             </td>
                         </tr>
                     @endforeach
-                    <tr class="bg-pink-200">
+                    <tr class="bg-pink-200 text-center">
                         <td class="px-6 py-4 text-xs font-bold text-gray-700 uppercase dark:text-gray-400">Total</td>
                         <td></td>
                         <td></td>
