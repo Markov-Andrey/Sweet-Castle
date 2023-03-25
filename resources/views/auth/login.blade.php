@@ -13,9 +13,7 @@
                 </div>
                 <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div class="max-w-md mx-auto">
-                        <div>
-                            <h1 class="text-center text-5xl font-semibold sweet-font text-pink-600">Login Form</h1>
-                        </div>
+                        <h1 class="text-center text-5xl font-semibold sweet-font text-pink-600">Login Form</h1>
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                 <div class="relative">
@@ -27,6 +25,7 @@
                                     @error('email')
                                         @include('partials.error', ['message' => $message])
                                     @enderror
+
                                 </div>
                                 <div class="relative">
                                     <input autocomplete="off" id="password" name="password" type="password" class="hover:bg-pink-100 rounded-lg peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900" placeholder="Password" />
@@ -37,17 +36,20 @@
                                     @error('password')
                                         @include('partials.error', ['message' => $message])
                                     @enderror
-                                </div>
-                                <div>
-                                    <a href="{{ route("forgot") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Forgot your password?</a>
+
                                 </div>
 
-                                <div>
-                                    <a href="{{ route("register") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Sign up</a>
-                                </div>
-                                <div class="relative">
-                                    <button class="bg-blue-500 text-white rounded-md px-2 py-1">Submit</button>
-                                </div>
+                                @foreach([
+                                    'forgot' => 'Forgot your password?',
+                                    'register' => 'Sign up?',
+                                    ]
+                                    as $route => $name)
+                                    <div>
+                                        <a href="{{ route($route) }}" class="font-medium text-rose-900 hover:bg-pink-100 rounded-md p-2">{{ $name }}</a>
+                                    </div>
+                                @endforeach
+
+                                <button type="submit" class="text-center w-full rounded-md text-white py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium">Submit</button>
                             </div>
                         </div>
                     </div>
