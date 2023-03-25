@@ -16,54 +16,53 @@
     </a>
 
     <!-- Content -->
-    <div id="dropdownHover" class="rounded-full z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 origin-top-left">
+    <div id="dropdownHover" class="rounded-full z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
         @if($totalItems)
-        <table class="bg-white w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                <tr>
-                    @foreach(['Photo','Name','Price','Quantity','Subtotal',] as $name)
-                        @if($loop->odd)
-                            <th scope="col" class="px-6 py-3 bg-pink-50 dark:bg-gray-800">
-                                {{$name}}
+            <table class="absolute -top-2 -right-5 bg-white w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                    <tr>
+                        @foreach(['Photo','Name','Price','Quantity','Subtotal',] as $name)
+                            @if($loop->odd)
+                                <th scope="col" class="px-6 py-3 bg-pink-50 dark:bg-gray-800">
+                                    {{$name}}
+                                </th>
+                            @else
+                                <th scope="col" class="px-6 py-3">
+                                    {{$name}}
+                                </th>
+                            @endif
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($itemsCollection as $item)
+                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 bg-pink-50">
+                                <img class="rounded-full border border-gray-100 shadow-sm w-10" src="/storage/products/{{ $item->product->thumbnail }}" alt="{{ $item->product->title }}">
                             </th>
-                        @else
-                            <th scope="col" class="px-6 py-3">
-                                {{$name}}
-                            </th>
-                        @endif
+                            <td class="px-6 py-4">
+                                {{ $item->product->title }}
+                            </td>
+                            <td class="px-6 py-4 bg-pink-50">
+                                {{ $item->product->price }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $item->quantity }}
+                            </td>
+                            <td class="px-6 py-4 bg-pink-50">
+                                {{ number_format($item->product->price * $item->quantity, 2) }}
+                            </td>
+                        </tr>
                     @endforeach
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($itemsCollection as $item)
-                <tr class="border-b border-gray-200 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 bg-pink-50">
-                        <img class="rounded-full border border-gray-100 shadow-sm w-10" src="/storage/products/{{ $item->product->thumbnail }}" alt="{{ $item->product->title }}">
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ $item->product->title }}
-                    </td>
-                    <td class="px-6 py-4 bg-pink-50">
-                        {{ $item->product->price }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->quantity }}
-                    </td>
-                    <td class="px-6 py-4 bg-pink-50">
-                        {{ number_format($item->product->price * $item->quantity, 2) }}
-                    </td>
-                </tr>
-            @endforeach
-            <tr class="bg-pink-200">
-                <td class="px-6 py-4 text-xs font-bold text-gray-700 uppercase dark:text-gray-400">Total</td>
-                <td></td>
-                <td></td>
-                <td class="px-6 py-4">{{ $totalItems }}</td>
-                <td class="px-6 py-4">${{ $total }}</td>
-            </tr>
-
-            </tbody>
-        </table>
+                    <tr class="bg-pink-200">
+                        <td class="px-6 py-4 text-xs font-bold text-gray-700 uppercase dark:text-gray-400">Total</td>
+                        <td></td>
+                        <td></td>
+                        <td class="px-6 py-4">{{ $totalItems }}</td>
+                        <td class="px-6 py-4">${{ $total }}</td>
+                    </tr>
+                </tbody>
+            </table>
         @endif
     </div>
 </div>

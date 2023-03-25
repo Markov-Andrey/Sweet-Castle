@@ -1033,6 +1033,15 @@ input:checked + .toggle-bg {
 .top-0 {
   top: 0px;
 }
+.-right-5 {
+  right: -1.25rem;
+}
+.right-2 {
+  right: 0.5rem;
+}
+.-right-0 {
+  right: -0px;
+}
 .z-0 {
   z-index: 0;
 }
