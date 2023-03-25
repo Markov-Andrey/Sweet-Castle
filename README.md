@@ -77,6 +77,7 @@ Deployment:
 
 # Frontend features
 1. Order style changes depending on the status
+2. Styling is done with Tailwind and Flowbite responsive components
 
 # Backend features
 1. Factories and seeds are used to fill the base
@@ -95,4 +96,5 @@ Deployment:
 - Implemented adding products to the cart through the database
 - Transferring data from cart to order
 - Order status change
+- Cart preview showing items and amount
 
