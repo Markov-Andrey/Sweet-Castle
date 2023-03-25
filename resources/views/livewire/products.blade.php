@@ -1,15 +1,20 @@
 <div x-data="{}">
-    <div class="container mx-auto px-6 py-8">
+    <div class="container mx-auto px-6 py-8 flex flex-col">
         <h3 class="text-gray-700 text-3xl font-medium">Products</h3>
 
         <div class="mt-8">
-            <a wire:click="add" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Add product</a>
+            <svg wire:click="add" data-tooltip-target="tooltip-top" data-tooltip-placement="top" class="cursor-pointer hover:fill-pink-500 h-12 w-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Add_Plus_Square"> <path id="Vector" d="M8 12H12M12 12H16M12 12V16M12 12V8M4 16.8002V7.2002C4 6.08009 4 5.51962 4.21799 5.0918C4.40973 4.71547 4.71547 4.40973 5.0918 4.21799C5.51962 4 6.08009 4 7.2002 4H16.8002C17.9203 4 18.4801 4 18.9079 4.21799C19.2842 4.40973 19.5905 4.71547 19.7822 5.0918C20.0002 5.51962 20.0002 6.07967 20.0002 7.19978V16.7998C20.0002 17.9199 20.0002 18.48 19.7822 18.9078C19.5905 19.2841 19.2842 19.5905 18.9079 19.7822C18.4805 20 17.9215 20 16.8036 20H7.19691C6.07899 20 5.5192 20 5.0918 19.7822C4.71547 19.5905 4.40973 19.2842 4.21799 18.9079C4 18.4801 4 17.9203 4 16.8002Z" stroke="#2d2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g>
+            </svg>
+        </div>
+        <!-- tooltip -->
+        <div id="tooltip-top" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            Add new product
+            <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
         <div wire:target="store" wire:loading.class="opacity-50" class="flex flex-col mt-8">
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                <div
-                    class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
                     <table class="min-w-full">
                         <thead>
                         <tr>

@@ -1,12 +1,11 @@
 <div x-data="{open: false}">
-    <div class="container mx-auto px-6 py-8">
-        <h3 class="text-gray-700 text-3xl font-medium">Orders</h3>
+    <div class="container mx-auto px-6 py-8 flex flex-col">
+        <h3 class="text-gray-900 text-3xl font-medium">Orders</h3>
 
         <div id="accordion-arrow-icon" data-accordion="close">
             @foreach($groupOrders as $orderNum => $orderProducts)
 
-            <h2 id="accordion-arrow-icon-heading-{{ $loop->iteration }}">
-                <button type="button" class="flex gap-x-4 items-center justify-between w-full p-5 font-medium text-left text-gray-900 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-white dark:bg-gray-800 focus:ring-gray-200
+                <button id="accordion-arrow-icon-heading-{{ $loop->iteration }}" type="button" class="text-gray-800 flex flex-row gap-x-4 items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-white dark:bg-gray-800 focus:ring-gray-200
                 @switch($orderProducts->first()->status)
                     @case(1)
                         bg-red-400
@@ -24,9 +23,9 @@
                         active:bg-yellow-300
                     @break
                     @case(4)
-                        bg-blue-200
-                        hover:bg-blue-300
-                        active:bg-blue-400
+                        bg-blue-300
+                        hover:bg-blue-400
+                        active:bg-blue-500
                     @break
                     @case(5)
                         bg-green-400
@@ -71,24 +70,16 @@
                     </div>
                     <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"></path></svg>
                 </button>
-            </h2>
 
             <div id="accordion-arrow-icon-body-{{ $loop->iteration }}" aria-labelledby="accordion-arrow-icon-heading-{{ $loop->iteration }}">
                 <table class="min-w-full">
                     <thead>
                     <tr>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Product
-                        </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Quantity
-                        </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Price
-                        </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Subtotal
-                        </th>
+                        @foreach(['Product', 'Quantity', 'Price', 'Subtotal'] as $str)
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                {{ $str }}
+                            </th>
+                        @endforeach
                     </tr>
                     </thead>
                 @foreach($orderProducts as $order)

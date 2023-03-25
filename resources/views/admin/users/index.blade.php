@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container mx-auto px-6 py-8">
+    <div class="container mx-auto px-6 py-8 flex flex-col">
 
         <h3 class="text-gray-700 text-3xl font-medium">Users</h3>
 
