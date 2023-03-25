@@ -1,21 +1,31 @@
+<?php
+    $time = date('H:i');
+    if($time >= '06:00' && $time < '12:00'){
+        $greetings = 'Good morning';
+    } elseif ($time >= '12:00' && $time < '18:00') {
+        $greetings = 'Good afternoon';
+    } else {
+        $greetings = 'Good evening';
+    }
+?>
+
 <header class="m-5 bg-gradient-to-r from-blue-200 to-pink-200 rounded-md">
     <nav class="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 ">
         <!-- Sweet Castle Logo, Brand name, Slogan -->
         <div class="flex flex-wrap flex-col justify-between items-center mx-auto max-w-screen-xl">
             <a href="{{ route("home") }}" class="flex items-center flex-row">
                 <img src="/ico/logo.png" class="mr-3 h-6 sm:h-10" alt="Sweet Castle Logo" />
-                <h1 class="text-7xl font-bold text-center sweet-font text-pink-500 drop-shadow-lg">
-                    <span>S</span><span class="text-pink-400">w</span><span>e</span><span class="text-pink-400">e</span><span>t</span>
-                    <span>C</span><span class="text-pink-400">a</span><span>s</span><span class="text-pink-400">t</span><span>l</span><span class="text-pink-400">e</span>
+                <h1 class="text-7xl font-bold text-center sweet-font text-pink-600 drop-shadow-lg">
+                    Sweet Castle
                 </h1>
             </a>
-            <h2 class="text-3xl text-center sweet-font text-rose-500 drop-shadow-md">Welcome to the fairytale kingdom!</h2>
+            <h2 class="text-3xl text-center sweet-font text-pink-500 drop-shadow-md">Welcome to the fairytale kingdom!</h2>
         </div>
 
         <div class="flex flex-wrap flex-auto justify-between items-center mx-auto max-w-screen-xl">
             <div class="flex items-center">
                 <p class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
-                    Hello,
+                    {{ $greetings }},
                     @auth("web")
                         {{ Auth::user()->name }}
                     @endauth
