@@ -15,10 +15,12 @@
     </head>
     <body>
         @yield('content')
+
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+
         @include('partials.js')
         @livewireScripts
-    <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
     </body>
 </html>
