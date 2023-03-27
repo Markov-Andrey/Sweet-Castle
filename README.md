@@ -76,8 +76,12 @@ Deployment:
 - **Flowbite** - plugin for Tailwind that allows you to create dynamic components using JS
 
 # Frontend features
-1. Order style changes depending on the status
-2. Styling is done with Tailwind and Flowbite responsive components
+1. Styling is done with Tailwind and Flowbite responsive components
+2. Order style changes depending on the status
+3. Accordions in the admin panel orders
+4. Tooltip above the "+" button in the products category of the admin panel
+5. Responsive sidebar admin panel
+6. Responsive website menu
 
 # Backend features
 1. Factories and seeds are used to fill the base
