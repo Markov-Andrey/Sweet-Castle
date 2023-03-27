@@ -18,13 +18,13 @@ class OrderNotificationTelegram
         $message = OrderNotificationTelegram::title($data[0]->order);
         $message .= OrderNotificationTelegram::from($user);
 
-        $message .= "🍰 <b>List:</b>%0A";
+        $message .= "🍰 <b>List:</b>\n";
 
         foreach($data as $item){
             $product = Product::find($item->product_id);
 
             $message .= " - ".$product->title." - ";
-            $message .= $item->quantity."%0A";
+            $message .= $item->quantity."\n";
 
             $sum += $product->price * $item->quantity;
         }
@@ -39,11 +39,11 @@ class OrderNotificationTelegram
     public static function title($title): string
     {
 
-        return "✅ <b>New order %0A 🆔 {$title}</b>%0A";
+        return "✅ <b>New order \n🆔 {$title}</b>\n";
     }
 
     public static function from($user): string
     {
-        return "🙍‍♂ <b>From:</b> {$user->name}%0A 📫<b>Contact:</b> {$user->email} %0A";
+        return "🙍‍♂ <b>From:</b> {$user->name}\n📫<b>Contact:</b> {$user->email}\n";
     }
 }
