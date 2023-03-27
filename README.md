@@ -97,4 +97,5 @@ Deployment:
 - Transferring data from cart to order
 - Order status change
 - Cart preview showing items and amount
-
+7. Using an external API:
+- Notification of a new order in Telegram
