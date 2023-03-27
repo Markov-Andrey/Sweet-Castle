@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Order;
 use App\Models\Status;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -41,10 +42,18 @@ class Orders extends Component
                 'products.price as product_price',
                 'statuses.status_name as status_name')
             ->orderBy('orders.created_at', 'DESC')
-            ->paginate(10);
+            ->get();
 
-        //Grouping by identical orders
-        $groupOrders = $orders->groupBy('order');
+        //Custom pagination
+        $currentPage = request()->page ?? 1;
+        $perPage = 5;
+        $groupOrders = $orders->groupBy('order'); //Grouping by order number
+
+        $currentPageItems = $groupOrders->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $groupedOrdersPaginated = new LengthAwarePaginator($currentPageItems, $groupOrders->count(), $perPage, $currentPage);
+
+        $groupedOrdersPaginated->setPath(request()->url());
+        //
 
         //Total amount for orders
         $totals = $groupOrders->map(function ($group) {
@@ -65,7 +74,7 @@ class Orders extends Component
 
         return view('livewire.orders', [
             'orders' => $orders,
-            'groupOrders' => $groupOrders,
+            'groupOrders' => $groupedOrdersPaginated,
             'statuses' => $statuses,
             'totals' => $totals,
         ]);

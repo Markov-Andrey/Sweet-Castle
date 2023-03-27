@@ -23,9 +23,9 @@
                         active:bg-yellow-300
                     @break
                     @case(4)
-                        bg-blue-300
-                        hover:bg-blue-400
-                        active:bg-blue-500
+                        bg-sky-300
+                        hover:bg-sky-400
+                        active:bg-sky-500
                     @break
                     @case(5)
                         bg-green-400
@@ -44,30 +44,19 @@
                     @break
                 @endswitch
                     " data-accordion-target="#accordion-arrow-icon-body-{{ $loop->iteration}}" aria-expanded="true" aria-controls="accordion-arrow-icon-body-{{ $loop->iteration}}" @click="open = !open">
-                    <div class="flex gap-x-4 flex-col text-center">
-                        <span>№</span>
-                        <span>{{ $orderNum }}</span>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <span>User</span>
-                        <span>{{ $orderProducts->first()->user_name }}</span>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <span>Contact</span>
-                        <span>{{ $orderProducts->first()->user_email }}</span>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <span>Status</span>
-                        <span>{{ $orderProducts->first()->status_name }}</span>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <span>Created at</span>
-                        <span>{{ $orderProducts->first()->created_at }}</span>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <span>Updated at</span>
-                        <span>{{ $orderProducts->first()->updated_at }}</span>
-                    </div>
+                    @foreach([
+                        '№' => $orderNum,
+                        'User' => $orderProducts->first()->user_name,
+                        'Contact' => $orderProducts->first()->user_email,
+                        'Status' => $orderProducts->first()->status_name,
+                        'Created at' => $orderProducts->first()->created_at,
+                        'Updated at' => $orderProducts->first()->updated_at,
+                    ] as $key => $value)
+                        <div class="flex flex-col text-center">
+                            <p>{{ $key }}</p>
+                            <p>{{ $value }}</p>
+                        </div>
+                    @endforeach
                     <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"></path></svg>
                 </button>
 
@@ -131,7 +120,7 @@
                 </table>
             </div>
             @endforeach
+            {{ $groupOrders->links() }}
         </div>
-
     </div>
 </div>

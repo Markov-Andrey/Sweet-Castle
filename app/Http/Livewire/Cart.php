@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Services\RandomCode;
+use App\Actions\OrderTelegramAction;
 
 class Cart extends Component
 {
@@ -37,7 +38,7 @@ class Cart extends Component
         }
 
         $item->save();
-        $this->emit('productAdd');
+        $this->emit('productAdd'); //Send event to listener
     }
 
     /**
@@ -46,13 +47,13 @@ class Cart extends Component
     public function delete($id)
     {
         CartItem::destroy($id);
-        $this->emit('productAdd');
+        $this->emit('productAdd'); //Send event to listener
     }
 
     /**
-     * Create an order for the administrator
+     * Create an new order for the administrator
      */
-    public function order()
+    public function order(OrderTelegramAction $orderTelegramAction)
     {
         $code = RandomCode::generate(7);
         $user = Auth::id();
@@ -66,9 +67,19 @@ class Cart extends Component
             $order->quantity = $item->quantity;
             $order->status = 1;
             $order->save();
+
+            //add in order
+            $orderTelegramAction->add($order);
+
             $item->delete();
         }
-        $this->emit('productAdd');
+
+        //send order to Telegram notification
+        $orderTelegramAction->send();
+
+
+
+        $this->emit('productAdd'); //Send event to listener
     }
 
     /**
