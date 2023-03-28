@@ -17,7 +17,7 @@ class ProductFactory extends Factory
             "title" => $this->faker->name(),
             "description" => $this->faker->text(),
             "thumbnail" => $this->faker->image("public/storage/products", 640, 520, null, false),
-            "price" => $this->faker->numberBetween(10,50),
+            "price" => number_format($this->faker->numberBetween(5,50), 2),
         ];
     }
 }
