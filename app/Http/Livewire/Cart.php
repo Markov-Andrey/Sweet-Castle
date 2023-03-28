@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\CartItem;
 use App\Models\Order;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Services\RandomCode;
@@ -29,11 +30,9 @@ class Cart extends Component
     {
         $item = CartItem::find($id);
 
-        if($item->quantity > 0){
+        if(($item->quantity > 0) && (is_numeric($item->quantity))){
             $item->quantity -= 1;
-        }
-
-        if($item->quantity == 0){
+        } else {
             $this->delete($id);
         }
 
@@ -60,17 +59,18 @@ class Cart extends Component
         $cart = CartItem::where('user_id', Auth::id())->get();
 
         foreach ($cart as $item) {
-            $order = new Order();
-            $order->order = $user.$code;
-            $order->user_id = $item->user_id;
-            $order->product_id = $item->product_id;
-            $order->quantity = $item->quantity;
-            $order->status = 1;
-            $order->save();
+            if($item->quantity > 0){
+                $order = new Order();
+                $order->order = $user.$code;
+                $order->user_id = $item->user_id;
+                $order->product_id = $item->product_id;
+                $order->quantity = $item->quantity;
+                $order->status = 1;
+                $order->save();
 
-            //add in order
-            $orderTelegramAction->add($order);
-
+                //add in order
+                $orderTelegramAction->add($order);
+            }
             $item->delete();
         }
 
