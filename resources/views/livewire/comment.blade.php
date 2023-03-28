@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 mb-20">
+<div class="mx-auto flex flex-col gap-4 lg:flex-row justify-center">
     <section class="rounded-b-lg mt-4">
         @auth("web")
             <form wire:submit.prevent="add">
