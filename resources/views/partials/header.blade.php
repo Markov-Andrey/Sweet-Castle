@@ -3,16 +3,18 @@
         <!-- Sweet Castle Logo, Brand name, Slogan -->
         <div class="flex flex-wrap flex-col justify-between items-center mx-auto max-w-screen-xl">
             <a href="{{ route("home") }}" class="flex items-center flex-row">
-                <img src="/ico/logo.png" class="mr-3 h-6 sm:h-10" alt="Sweet Castle Logo" />
-                <h1 class="text-7xl font-bold text-center sweet-font text-pink-600 drop-shadow-lg">
+                <img src="/ico/logo.png" class="mr-3 h-10 sm:h-16" alt="Sweet Castle Logo" />
+                <h1 class="text-5xl sm:text-7xl font-bold text-center sweet-font text-pink-600 drop-shadow-lg">
                     Sweet Castle
                 </h1>
             </a>
-            <h2 class="text-3xl text-center sweet-font text-pink-500 drop-shadow-md">Welcome to the fairytale kingdom!</h2>
+            <h2 class="text-2xl sm:text-4xl text-center sweet-font text-pink-500 drop-shadow-md">
+                Welcome to the fairytale kingdom!
+            </h2>
         </div>
 
+        <!-- Nav -->
         <div class="flex flex-wrap flex-auto justify-between items-center mx-auto max-w-screen-xl">
-
             <!-- Header button -->
             <div id="dropdownHoverButton"
                  data-dropdown-toggle="dropdownHover1"
@@ -22,13 +24,12 @@
                     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-blue-50 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         {{ \App\Services\GreetingsServices::handle() }},
                         @auth("web")
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->name }}!
                         @endauth
                         @guest("web")
-                            guest
+                            guest!
                         @endguest
-                        !
-                        </span>
+                    </span>
                 </button>
 
                 <!-- Content -->
@@ -61,8 +62,8 @@
                     <svg class="hidden w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </button>
             </div>
-            <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <div class="hidden justify-center items-center w-full lg:flex lg:w-auto lg:order-1 lg:w-1/3" id="mobile-menu-2">
+                <ul class="w-full flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     @foreach([
                         'products.index' => 'Marketplace',
                         'contacts' => 'Contacts',
