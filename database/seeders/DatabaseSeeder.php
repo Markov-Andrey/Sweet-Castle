@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\AdminUser;
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Status;
 use App\Models\User;
@@ -55,6 +56,29 @@ class DatabaseSeeder extends Seeder
             "password" => bcrypt("12345"),
 
         ]);
+
+        //Comment - Factory
+        $dataComment = [
+            ['commentable_id' => 1, 'text' => 'This cake is absolutely delicious! The blueberries are fresh and add the perfect touch of sweetness. Highly recommend!'],
+            ['commentable_id' => 2, 'text' => 'I was blown away by how amazing this cake tasted! The rich chocolate flavor combined with the smooth frosting made it a total hit at my party.'],
+            ['commentable_id' => 3, 'text' => 'The colors of this cake are so vibrant and fun! And the taste is just as amazing. I love how each layer has a unique flavor that all work so well together'],
+            ['commentable_id' => 4, 'text' => 'I\'m a big fan of berries and this cake did not disappoint. The mix of different berries in each bite was so satisfying. I\'ll definitely be ordering this one again'],
+            ['commentable_id' => 5, 'text' => 'I was skeptical at first, but this cake blew me away! The pancake layers were fluffy and the maple syrup frosting was the perfect touch. Such a unique and delicious cake'],
+            ['commentable_id' => 6, 'text' => 'This cake is truly a work of art! The intricate design on top was almost too pretty to eat, but once I did, I was in heaven. The flavor was amazing and the texture was so light and airy'],
+            ['commentable_id' => 7, 'text' => 'This cake is so smooth and creamy, it\'s like velvet in your mouth! The classic red velvet flavor is spot on and the cream cheese frosting is the perfect complement'],
+            ['commentable_id' => 8, 'text' => 'If you\'re a chocolate lover like me, this cake is a must-try. The rich chocolate flavor is so decadent and the ganache frosting takes it to the next level. I couldn\'t get enough!'],
+            ['commentable_id' => 9, 'text' => 'I ordered this cake for a special occasion and it did not disappoint. The combination of flavors was so unique and delicious. I especially loved the caramel drizzle on top'],
+            ['commentable_id' => 10, 'text' => 'Don\'t be scared by the name, this cake is amazing! The dark chocolate flavor is so rich and the edible spider on top is a fun touch. This cake is definitely a showstopper'],
+            ['commentable_id' => 11, 'text' => 'I was intrigued by the name and had to try this cake. It\'s such a unique flavor and the green color is so fun. The pistachio flavor is really subtle and the texture is perfect'],
+            ['commentable_id' => 12, 'text' => 'This cake is like a tropical paradise in every bite! The pineapple flavor is so refreshing and the gold leaf on top makes it feel extra special. I\'ll be dreaming of this cake all summer long'],
+            ['commentable_id' => 13, 'text' => 'If you\'re an Oreo fan, you need to try this cake! The layers of crushed Oreos and frosting are so delicious and the cookie crumbles on top add the perfect crunch'],
+            ['commentable_id' => 14, 'text' => 'This cake is a fruit lover\'s dream! The mix of fresh fruit on top is so refreshing and the light sponge cake underneath is the perfect base. I could eat this cake every day!'],
+            ['commentable_id' => 15, 'text' => 'I was so excited to try this cake and it exceeded my expectations. The milk chocolate flavor is so smooth and creamy, and the hazelnut crunch on top adds the perfect texture. I\'ll be ordering this one again for sure'],
+            ['commentable_id' => 16, 'text' => 'This cake is so unique and fun! The chocolate-covered \'ants\' on top are such a creative touch and the cake itself is so moist and flavorful. I loved every bite'],
+        ];
+        foreach ($dataComment as $item){
+            Comment::factory()->create($item);
+        }
 
         //Status - Factory
         $dataStatus = [

@@ -10,7 +10,7 @@
         @each('products.partials.item', $products, 'product', 'products.partials.no-item')
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center py-10">
         {{ $products->links() }}
     </div>
 
