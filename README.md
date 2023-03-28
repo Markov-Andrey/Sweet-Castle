@@ -17,6 +17,7 @@ Config Open Server:
   - \sweet-castle\public
 
 Deployment:
+- .env & .env.testing copy
 - composer install
 - npm run dev
 - php artisan storage:link
