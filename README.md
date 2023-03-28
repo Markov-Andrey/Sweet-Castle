@@ -23,6 +23,7 @@ Deployment:
 - php artisan storage:link
 - php artisan migrate --seed
 - php artisan queue:work
+- php artisan test (check all pages are responsive)
 
 # Main features
 - Displaying products
