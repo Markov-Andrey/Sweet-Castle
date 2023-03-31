@@ -44,6 +44,7 @@ class Orders extends Component
                 'statuses.status_name as status_name')
             ->orderBy('orders.created_at', 'DESC');
 
+        //Status filter
         if ($this->selectedStatus) {
             $query->where('orders.status', $this->selectedStatus);
         }
