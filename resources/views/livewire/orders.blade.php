@@ -1,7 +1,16 @@
 <div x-data="{open: false}">
+
+    <form wire:subnit.prevent="$refresh">
+        <select wire:model="selectedStatus" class="m-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="">All statuses</option>
+                @foreach($statuses as $status)
+                    <option value="{{ $status->id }}">{{ $status->status_name }}</option>
+                @endforeach
+        </select>
+    </form>
+
     <div class="container mx-auto px-6 py-8 flex flex-col">
         <h3 class="text-gray-900 text-3xl font-medium">Orders</h3>
-
         <div id="accordion-arrow-icon" data-accordion="close">
             @foreach($groupOrders as $orderNum => $orderProducts)
 

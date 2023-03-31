@@ -15,6 +15,7 @@ class Orders extends Component
      * @var array
      */
     public $selectedOption = [];
+    public $selectedStatus = null;
 
     /**
      * @param $orderProducts - Order Collection
@@ -30,7 +31,7 @@ class Orders extends Component
 
     public function render()
     {
-        $orders = DB::table('orders')
+        $query = DB::table('orders')
             ->leftJoin('users', 'orders.user_id', '=', 'users.id')
             ->leftJoin('products', 'orders.product_id', '=', 'products.id')
             ->leftJoin('statuses', 'orders.status', '=', 'statuses.id')
@@ -41,8 +42,14 @@ class Orders extends Component
                 'products.title as product_title',
                 'products.price as product_price',
                 'statuses.status_name as status_name')
-            ->orderBy('orders.created_at', 'DESC')
-            ->get();
+            ->orderBy('orders.created_at', 'DESC');
+
+        if ($this->selectedStatus) {
+            $query->where('orders.status', $this->selectedStatus);
+        }
+
+        $orders = $query->get();
+
 
         //Custom pagination
         $currentPage = request()->page ?? 1;
