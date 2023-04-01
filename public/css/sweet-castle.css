@@ -1063,11 +1063,11 @@ input:checked + .toggle-bg {
 .z-50 {
   z-index: 50;
 }
-.m-5 {
-  margin: 1.25rem;
-}
 .m-3 {
   margin: 0.75rem;
+}
+.m-5 {
+  margin: 1.25rem;
 }
 .-mx-8 {
   margin-left: -2rem;
@@ -1990,6 +1990,9 @@ input:checked + .toggle-bg {
 }
 .uppercase {
   text-transform: uppercase;
+}
+.italic {
+  font-style: italic;
 }
 .leading-10 {
   line-height: 2.5rem;
