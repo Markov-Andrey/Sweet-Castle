@@ -17,6 +17,7 @@ Config Open Server:
   - \sweet-castle\public
 
 Deployment:
+- new DB - sweet_castle
 - .env & .env.testing copy
 - composer install
 - npm run dev
